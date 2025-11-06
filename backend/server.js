@@ -48,7 +48,8 @@ app.get('/api/search/items', searchValidation, searchItems);
 // IMPORTANT: This must come BEFORE the 404 handler
 if (process.env.NODE_ENV === "production") {
   // Serve static files from frontend build
-  const frontendPath = path.join(__dirname, "frontend", "dist");
+  // Go up one level from backend folder to reach frontend
+  const frontendPath = path.join(__dirname, "..", "frontend", "dist");
   app.use(express.static(frontendPath));
 
   // Handle client-side routing - return index.html for all non-API routes
