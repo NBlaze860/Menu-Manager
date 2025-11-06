@@ -44,24 +44,29 @@ import { searchItems } from './src/controllers/item.controller.js';
 import { searchValidation } from './src/utils/validators.js';
 app.get('/api/search/items', searchValidation, searchItems);
 
-// Handle undefined routes
-app.use('*', (req, res) => {
-  res.status(404).json({
-    success: false,
-    message: 'Route not found',
-  });
-});
-
-// Error handling middleware (must be last)
-app.use(errorHandler);
-
+// Production: Serve static files and handle client-side routing
+// IMPORTANT: This must come BEFORE the 404 handler
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+  // Serve static files from frontend build
+  const frontendPath = path.join(__dirname, "frontend", "dist");
+  app.use(express.static(frontendPath));
 
+  // Handle client-side routing - return index.html for all non-API routes
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
+    res.sendFile(path.join(frontendPath, "index.html"));
+  });
+} else {
+  // Development: Handle undefined routes with 404
+  app.use('*', (req, res) => {
+    res.status(404).json({
+      success: false,
+      message: 'Route not found',
+    });
   });
 }
+
+// Error handling middleware (must be last)
+app.use(errorHandler)
 
 // Start server
 const PORT = process.env.PORT || 5000;
