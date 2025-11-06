@@ -1,0 +1,5 @@
+
+{
+  "name": "Restaurant Menu Management Dashboard",
+  "description": "A production-ready admin dashboard for managing restaurant menu hierarchies including categories, subcategories, and items, with an interactive menu tree visualizer and tax inheritance system."
+}
