@@ -483,32 +483,6 @@ menu-manager/
 
 ---
 
-## Deployment
-
-Ready to deploy your Menu Manager to production? We've got you covered!
-
-### 📦 Deploy to Render (Recommended)
-
-Render offers a simple, modern deployment platform with a generous free tier.
-
-**Quick Start:**
-1. See [`RENDER_QUICK_START.md`](./RENDER_QUICK_START.md) for a 10-minute deployment checklist
-2. See [`RENDER_DEPLOYMENT_GUIDE.md`](./RENDER_DEPLOYMENT_GUIDE.md) for detailed step-by-step instructions
-
-**Automated Deployment:**
-- Use the included `render.yaml` blueprint for one-click deployment
-- See [`.env.render.example`](./.env.render.example) for all required environment variables
-
-**What You'll Need:**
-- GitHub/GitLab account with your code
-- MongoDB Atlas account (free tier)
-- Cloudinary account (free tier)
-- 10-15 minutes
-
-Both backend and frontend can run on Render's free tier for testing and small-scale production use.
-
----
-
 ## License
 
 This project is licensed under the MIT License.
